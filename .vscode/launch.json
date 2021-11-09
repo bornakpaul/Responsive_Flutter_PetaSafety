@@ -5,38 +5,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Flutter",
-            "type": "dart",
-            "request": "launch",
-            "program": "lib/main.dart",
-            "flutterMode": "profile"
-        },
-        {
-            "name": "Flutter: Run all Tests",
-            "type": "dart",
-            "request": "launch",
-            "program": "./test/"
-        },
-        {
-            "name": "Dart",
-            "type": "dart",
-            "request": "launch",
-            "program": "bin/main.dart"
-        },
-        {
-            "name": "Flutter",
-            "type": "dart",
-            "request": "launch",
-            "program": "lib/main.dart"
-        },
-        {
-            "name": "Launch Chrome",
-            "request": "launch",
-            "type": "pwa-chrome",
-            "url": "http://localhost:8080",
-            "webRoot": "${workspaceFolder}"
-        },
-        {
             "type": "pwa-chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:responsiveweb/responsive.dart';
 
 import '../../constants.dart';
+import 'menu_items.dart';
 
 //! Headers
 
@@ -28,63 +30,44 @@ class Header extends StatelessWidget {
             style: GoogleFonts.reenieBeanie(fontSize: 18),
           ),
           Spacer(),
-          NavItem(
-            tapEvent: () {},
-            title: 'About Us',
-            color: kTextColor,
-          ),
-          NavItem(
-            tapEvent: () {},
-            title: 'Donate',
-            color: kTextColor,
-          ),
-          NavItem(
-            tapEvent: () {},
-            title: 'Contact Us',
-            color: kTextColor,
-          ),
-          NavItem(
-            tapEvent: () {},
-            title: 'Login',
-            color: kTextColor,
-          ),
-          NavItem(
-            tapEvent: () {},
-            title: 'Shop',
-            color: kPrimaryColor,
-          ),
+          if (!isMobile(context))
+            Row(
+              children: [
+                NavItem(
+                  tapEvent: () {},
+                  title: 'About Us',
+                  color: kTextColor,
+                ),
+                NavItem(
+                  tapEvent: () {},
+                  title: 'Donate',
+                  color: kTextColor,
+                ),
+                NavItem(
+                  tapEvent: () {},
+                  title: 'Contact Us',
+                  color: kTextColor,
+                ),
+                NavItem(
+                  tapEvent: () {},
+                  title: 'Login',
+                  color: kTextColor,
+                ),
+                NavItem(
+                  tapEvent: () {},
+                  title: 'Shop',
+                  color: kPrimaryColor,
+                ),
+              ],
+            ),
+          if (isMobile(context))
+            IconButton(
+              onPressed: () {
+                Scaffold.of(context).openEndDrawer();
+              },
+              icon: Icon(Icons.menu),
+            ),
         ],
-      ),
-    );
-  }
-}
-
-class NavItem extends StatelessWidget {
-  const NavItem({
-    Key? key,
-    required this.title,
-    required this.tapEvent,
-    required this.color,
-  }) : super(key: key);
-
-  final String title;
-  final GestureTapCallback tapEvent;
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: tapEvent,
-      hoverColor: Colors.transparent,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15),
-        child: Text(
-          title,
-          style: TextStyle(
-            color: color,
-            fontWeight: FontWeight.w300,
-          ),
-        ),
       ),
     );
   }

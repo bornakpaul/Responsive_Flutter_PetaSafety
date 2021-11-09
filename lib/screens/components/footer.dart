@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:responsiveweb/constants.dart';
+import 'package:responsiveweb/responsive.dart';
 
 class Footer extends StatelessWidget {
   const Footer({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return (!isMobile(context)) ? DesktopFooter() : MobileFooter();
+  }
+}
+
+class DesktopFooter extends StatelessWidget {
+  const DesktopFooter({
     Key? key,
   }) : super(key: key);
 
@@ -15,8 +27,8 @@ class Footer extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Text(
-              'All Right Reserved',
-              style: TextStyle(fontSize: 10),
+              'All Right Reserved | BornTech',
+              style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
             ),
           ),
           Expanded(
@@ -41,6 +53,48 @@ class Footer extends StatelessWidget {
                 ),
               ],
             ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class MobileFooter extends StatelessWidget {
+  const MobileFooter({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+      child: Column(
+        children: [
+          Text(
+            'All Right Reserved | BornTech',
+            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              NavItem(
+                title: 'Twitter',
+                tapEvent: () {},
+              ),
+              NavItem(
+                title: 'Facebook',
+                tapEvent: () {},
+              ),
+              NavItem(
+                title: 'Linkedin',
+                tapEvent: () {},
+              ),
+              NavItem(
+                title: 'Instagram',
+                tapEvent: () {},
+              ),
+            ],
           ),
         ],
       ),
